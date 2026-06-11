@@ -1,0 +1,417 @@
+Password: 123
+
+
+
+=============
+Getintopc.com
+=============
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For The Love Of My Life ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+overflow:hidden;
+background:#000;
+color:white;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+opacity:0;
+visibility:hidden;
+transition:1s ease;
+background:
+linear-gradient(rgba(0,0,0,.55),
+rgba(0,0,0,.55)),
+url("https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2");
+background-size:cover;
+background-position:center;
+}
+
+.page.active{
+opacity:1;
+visibility:visible;
+}
+
+h1{
+font-size:4rem;
+margin-bottom:20px;
+text-shadow:0 0 20px rgba(255,255,255,.4);
+}
+
+p{
+font-size:1.4rem;
+max-width:800px;
+line-height:1.8;
+margin-bottom:30px;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+font-size:1.1rem;
+cursor:pointer;
+margin:10px;
+transition:.3s;
+}
+
+.primary{
+background:#ff4d88;
+color:white;
+}
+
+.primary:hover{
+transform:scale(1.08);
+}
+
+.hearts{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:999;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:floatUp 6s linear forwards;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-120px);
+opacity:0;
+}
+}
+
+#proposal h1{
+font-size:5rem;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.05);
+}
+}
+
+#yesBtn{
+background:#ff4d88;
+color:white;
+}
+
+#noBtn{
+background:white;
+color:black;
+position:absolute;
+}
+
+.final{
+background:
+radial-gradient(circle,
+#ff4d88,
+#000);
+}
+
+.ring{
+font-size:120px;
+animation:ringPop 2s ease;
+}
+
+@keyframes ringPop{
+0%{
+transform:scale(0);
+opacity:0;
+}
+100%{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.fadeText{
+animation:fadeIn 3s;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="your-song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hearts"></div>
+
+<!-- PAGE 1 -->
+
+<div class="page active">
+
+<h1>Hey Beautiful ❤️</h1>
+
+<p>
+I have something important to tell you...
+but first,
+let me take you through a little story.
+</p>
+
+<button class="btn primary" onclick="startStory()">
+Begin
+</button>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div class="page">
+
+<h1>The Day Everything Changed ✨</h1>
+
+<p>
+The day you entered my life,
+nothing looked different...
+yet somehow everything became better.
+</p>
+
+<button class="btn primary" onclick="nextPage()">
+Continue
+</button>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div class="page">
+
+<h1>You Became My Home ❤️</h1>
+
+<p>
+Your smile became my favorite sight.
+Your voice became my favorite sound.
+Your happiness became my favorite mission.
+</p>
+
+<button class="btn primary" onclick="nextPage()">
+Continue
+</button>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div class="page">
+
+<h1>My Favorite Future 🌎</h1>
+
+<p>
+More adventures.
+More laughter.
+More memories.
+Growing old together.
+A lifetime of choosing each other.
+</p>
+
+<button class="btn primary" onclick="proposalReveal()">
+One Last Thing...
+</button>
+
+</div>
+
+<!-- PAGE 5 -->
+
+<div class="page" id="proposal">
+
+<h1>❤️</h1>
+
+<p id="proposalText"></p>
+
+<div style="position:relative;width:500px;height:200px;">
+
+<button
+id="yesBtn"
+class="btn"
+onclick="accepted()">
+YES, A THOUSAND TIMES YES 💍
+</button>
+
+<button
+id="noBtn"
+class="btn">
+No
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let current=0;
+const pages=document.querySelectorAll(".page");
+
+function startStory(){
+document.getElementById("music").play();
+nextPage();
+}
+
+function nextPage(){
+
+pages[current].classList.remove("active");
+current++;
+
+if(current<pages.length){
+pages[current].classList.add("active");
+}
+}
+
+function proposalReveal(){
+
+pages[current].classList.remove("active");
+current++;
+
+pages[current].classList.add("active");
+
+const text=
+"Of all the decisions I've ever made... loving you was the easiest.<br><br>And now I have one question left...";
+
+let i=0;
+
+const target=document.getElementById("proposalText");
+
+const interval=setInterval(()=>{
+
+target.innerHTML=text.slice(0,i);
+
+i++;
+
+if(i>text.length){
+
+clearInterval(interval);
+
+setTimeout(()=>{
+document.querySelector("#proposal h1").innerHTML=
+"Will You Marry Me? 💍";
+},1000);
+
+}
+
+},35);
+
+}
+
+const noBtn=document.getElementById("noBtn");
+
+document.addEventListener("mousemove",(e)=>{
+
+const proposal=document.getElementById("proposal");
+
+if(!proposal.classList.contains("active")) return;
+
+const rect=noBtn.getBoundingClientRect();
+
+const dx=e.clientX-(rect.left+rect.width/2);
+const dy=e.clientY-(rect.top+rect.height/2);
+
+const distance=Math.sqrt(dx*dx+dy*dy);
+
+if(distance<120){
+
+const x=Math.random()*400;
+const y=Math.random()*150;
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+}
+
+});
+
+function accepted(){
+
+document.body.innerHTML=`
+
+<div class="page active final">
+
+<div class="ring">💍</div>
+
+<h1 class="fadeText">
+SHE SAID YES!
+</h1>
+
+<p class="fadeText">
+Today is the day our forever begins.
+<br><br>
+I can't wait to spend the rest of my life loving you.
+❤️
+</p>
+
+</div>
+
+`;
+
+setInterval(createHeart,120);
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
