@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shika ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#000;
+overflow:hidden;
+color:white;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+top:0;
+left:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+opacity:0;
+visibility:hidden;
+transition:1s;
+}
+
+.page.active{
+opacity:1;
+visibility:visible;
+}
+
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+top:0;
+left:0;
+filter:brightness(40%);
+z-index:-2;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.35);
+z-index:-1;
+}
+
+h1{
+font-size:4rem;
+margin-bottom:20px;
+padding:0 20px;
+}
+
+p{
+font-size:1.4rem;
+max-width:800px;
+line-height:1.8;
+padding:0 25px;
+margin-bottom:25px;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+font-size:1.1rem;
+cursor:pointer;
+background:#ff4d88;
+color:white;
+}
+
+.hearts{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:floatUp 6s linear forwards;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-120px);
+opacity:0;
+}
+}
+
+#proposal h1{
+font-size:5rem;
+}
+
+#noBtn{
+position:absolute;
+background:white;
+color:black;
+}
+
+.final{
+background:radial-gradient(circle,#ff4d88,#000);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="darkhaast.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hearts"></div>
+
+<!-- PAGE 1 -->
+
+<div class="page active">
+
+<img src="photo1.jpg.jpeg" class="bg">
+<div class="overlay"></div>
+
+<h1>Hey Shika ❤️</h1>
+
+<p>
+Before I ask you something important...
+I want to relive a few of my favorite moments with you.
+</p>
+
+<button class="btn" onclick="startStory()">
+Begin ✨
+</button>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div class="page">
+
+<img src="photo2.jpg.jpeg" class="bg">
+<div class="overlay"></div>
+
+<h1>You Became My Home ❤️</h1>
+
+<p>
+Somewhere between the conversations,
+the laughter,
+the hugs,
+and the quiet moments...
+you became my safe place.
+</p>
+
+<button class="btn" onclick="nextPage()">
+Continue →
+</button>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div class="page">
+
+<img src="photo3.jpg.jpeg" class="bg">
+<div class="overlay"></div>
+
+<h1>My Favorite Smile 😊</h1>
+
+<p>
+No matter what kind of day I'm having,
+your smile somehow makes everything better.
+</p>
+
+<button class="btn" onclick="nextPage()">
+Continue →
+</button>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div class="page">
+
+<img src="photo4.jpg.jpeg" class="bg">
+<div class="overlay"></div>
+
+<h1>My Favorite Future 🌍</h1>
+
+<p>
+When I think about the future,
+I don't think about places.
+I think about you being there.
+</p>
+
+<button class="btn" onclick="nextPage()">
+One Last Thing →
+</button>
+
+</div>
+
+<!-- PAGE 5 -->
+
+<div class="page" id="proposal">
+
+<div class="overlay"></div>
+
+<h1>Will You Marry Me? 💍</h1>
+
+<p>
+Shika...
+<br><br>
+If I could choose again,
+in every lifetime,
+I'd still choose you.
+</p>
+
+<div style="position:relative;width:600px;height:200px;">
+
+<button
+class="btn"
+onclick="accepted()">
+YES, A THOUSAND TIMES YES ❤️
+</button>
+
+<button id="noBtn">
+NO 😏
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let current=0;
+const pages=document.querySelectorAll(".page");
+
+function startStory(){
+
+document.getElementById("music")
+.play()
+.catch(()=>{});
+
+nextPage();
+
+}
+
+function nextPage(){
+
+pages[current].classList.remove("active");
+
+current++;
+
+pages[current].classList.add("active");
+
+}
+
+const noBtn=document.getElementById("noBtn");
+
+document.addEventListener("mousemove",(e)=>{
+
+if(!document.getElementById("proposal")
+.classList.contains("active")) return;
+
+const rect=noBtn.getBoundingClientRect();
+
+const dx=e.clientX-(rect.left+rect.width/2);
+const dy=e.clientY-(rect.top+rect.height/2);
+
+const distance=Math.sqrt(dx*dx+dy*dy);
+
+if(distance<120){
+
+noBtn.style.left=Math.random()*450+"px";
+noBtn.style.top=Math.random()*120+"px";
+
+}
+
+});
+
+function accepted(){
+
+document.body.innerHTML=`
+
+<div class="page active final">
+
+<h1 style="font-size:5rem;">
+💍
+</h1>
+
+<h1>
+SHIKA SAID YES ❤️
+</h1>
+
+<p>
+And just like that...
+the next chapter of our forever begins.
+<br><br>
+Love,
+<br>
+Golu ❤️
+</p>
+
+</div>
+
+`;
+
+setInterval(createHeart,120);
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,600);
+
+</script>
+
+</body>
+</html>
