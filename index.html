@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For The Love Of My Life ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#fff5f7;
+overflow:hidden;
+}
+
+.page{
+display:none;
+height:100vh;
+padding:40px;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+}
+
+.active{
+display:flex;
+}
+
+h1{
+font-size:3rem;
+color:#ff4d6d;
+margin-bottom:20px;
+}
+
+p{
+font-size:1.3rem;
+max-width:700px;
+line-height:1.7;
+margin-bottom:30px;
+}
+
+button{
+padding:15px 30px;
+font-size:1rem;
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:#ff4d6d;
+color:white;
+margin:10px;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+#proposal h1{
+font-size:4rem;
+}
+
+.hearts{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+font-size:30px;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<div class="page active">
+<h1>Hey Beautiful ❤️</h1>
+<p>
+Before I ask you something important,
+I want to take you through a little story.
+Our story.
+</p>
+<button onclick="nextPage()">Begin</button>
+</div>
+
+<div class="page">
+<h1>The Day We Met ✨</h1>
+<p>
+I didn't know it then,
+but meeting you would become one of the best things
+that ever happened to me.
+</p>
+<button onclick="nextPage()">Continue</button>
+</div>
+
+<div class="page">
+<h1>Why I Love You 🥰</h1>
+<p>
+Your smile.<br>
+Your kindness.<br>
+Your heart.<br>
+The way you make everything feel okay.
+</p>
+<button onclick="nextPage()">One More Thing</button>
+</div>
+
+<div class="page">
+<h1>My Favorite Future 🌎</h1>
+<p>
+More adventures.<br>
+More memories.<br>
+More laughter.<br>
+A lifetime with you.
+</p>
+<button onclick="nextPage()">Ready?</button>
+</div>
+
+<div class="page" id="proposal">
+<h1>Will You Marry Me? 💍</h1>
+
+<p>
+Of all the decisions I've ever made,
+loving you was the easiest.
+</p>
+
+<button onclick="yesClicked()">
+YES, A THOUSAND TIMES YES ❤️
+</button>
+
+<button id="hugBtn" onclick="hugFirst()">
+I Need A Hug First 🤗
+</button>
+</div>
+
+<script>
+
+let current=0;
+const pages=document.querySelectorAll('.page');
+
+function nextPage(){
+pages[current].classList.remove('active');
+current++;
+pages[current].classList.add('active');
+}
+
+function hugFirst(){
+alert("Come here first ❤️");
+}
+
+function yesClicked(){
+
+document.body.innerHTML=`
+<div style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:#fff5f7;
+text-align:center;">
+<h1 style="font-size:4rem;color:#ff4d6d;">
+SHE SAID YES! 💍❤️
+</h1>
+<p style="font-size:1.5rem;">
+The best chapter of our lives starts now.
+</p>
+</div>`;
+
+setInterval(createHeart,200);
+}
+
+function createHeart(){
+const heart=document.createElement('div');
+heart.className='heart';
+heart.innerHTML='❤️';
+heart.style.left=Math.random()*100+'vw';
+heart.style.position='fixed';
+heart.style.bottom='0';
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+}
+</script>
+
+</body>
+</html>
